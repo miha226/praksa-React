@@ -18,7 +18,7 @@ export default function CarComponent() {
 
 
    const  FetchCars = () => {
-    http.get("/Car").then((res) => {
+    http.get("/Car?PageSize=10").then((res) => {
         setCars(res.data);
         });   
    };
@@ -30,16 +30,26 @@ export default function CarComponent() {
             <td>{car.Year}</td>
             <td>{car.TopSpeed}</td>
             <td>{car.KilometersTraveled}</td>
+            <td onClick={DeleteCar} id={car.Id}>x</td>
         </tr>)}</> );
     
-
+    function DeleteCar(e){
+        console.log(e.target.id);
+        const path = "/car?Id="+e.target.id;
+        console.log(path);
+        http.delete(path ).then(res => {
+            console.log(res);
+            FetchCars();
+        });
+        
+    }
    
 
   return (
     <div>
-        <Button onClick={FetchCars}>Get all cars</Button>
+        <Button variant='info' onClick={FetchCars}>Get all cars</Button>
         {cars.length > 0 && 
-         <Table striped bordered hover>
+         <Table striped bordered hover variant='dark'>
             <thead>
                 <tr>
                 <th>Manufacturer name</th>
@@ -47,6 +57,7 @@ export default function CarComponent() {
                 <th>Year</th>
                 <th>Top speed</th>
                 <th>Kilometers traveled</th>
+                <th>Delete</th>
                 </tr>
                 {listElements}
             </thead>

@@ -18,7 +18,7 @@ const fields = ['name', 'surname', 'email'];
         <Container>
             <Routes>
               <Route path='/' element={<CarComponent/>}/>
-              <Route path='/form' element={<CarForm fields={fields}/>}/>
+              <Route path='/putCar' element={<CarForm fields={fields}/>}/>
             </Routes>
         </Container>
       

@@ -7,7 +7,8 @@ export default function () {
         <Container fluid>
             <Nav>
                 <Nav.Link href='/'>Cars</Nav.Link>
-                <Nav.Link href='/form'>Form</Nav.Link>
+                <Nav.Link href='/putCar'>Put car</Nav.Link>
+                
             </Nav>
         </Container>
     </Navbar>
